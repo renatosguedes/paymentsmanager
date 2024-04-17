@@ -22,9 +22,6 @@ public class GerenciadorUseCase {
         this.sistemaFluxosClient = sistemaFluxosClient;
     }
 
-    public void processarPagamento() {
-    }
-
     public GetFluxosResponse buscarFluxos() {
         return sistemaFluxosClient.getFluxos();
     }
