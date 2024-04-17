@@ -1,14 +1,14 @@
 package com.example.paymentsmanager.entities.dtos;
 
-public class GetFluxoByIdFluxoResponse {
+public class GetFluxoByIdPagamentoResponse {
 
     private String data;
     private double pmt;
 
-    public GetFluxoByIdFluxoResponse() {
+    public GetFluxoByIdPagamentoResponse() {
     }
 
-    public GetFluxoByIdFluxoResponse(String data, double pmt) {
+    public GetFluxoByIdPagamentoResponse(String data, double pmt) {
         this.data = data;
         this.pmt = pmt;
     }

@@ -1,22 +1,23 @@
 package com.example.paymentsmanager.entities;
 
-import java.util.Date;
+import com.example.paymentsmanager.entities.enums.StatusPagamento;
+
+import java.time.OffsetDateTime;
 
 public class Pagamento {
 
-    private Date dataPagamento;
+    private OffsetDateTime dataPagamento;
     private double valorPagamento;
+    private StatusPagamento statusPagamento;
 
-    public Pagamento(Date dataPagamento, double valorPagamento) {
-        this.dataPagamento = dataPagamento;
-        this.valorPagamento = valorPagamento;
+    public Pagamento() {
     }
 
-    public Date getDataPagamento() {
+    public OffsetDateTime getDataPagamento() {
         return dataPagamento;
     }
 
-    public void setDataPagamento(Date dataPagamento) {
+    public void setDataPagamento(OffsetDateTime dataPagamento) {
         this.dataPagamento = dataPagamento;
     }
 
@@ -26,5 +27,13 @@ public class Pagamento {
 
     public void setValorPagamento(double valorPagamento) {
         this.valorPagamento = valorPagamento;
+    }
+
+    public StatusPagamento getStatusPagamento() {
+        return statusPagamento;
+    }
+
+    public void setStatusPagamento(StatusPagamento statusPagamento) {
+        this.statusPagamento = statusPagamento;
     }
 }

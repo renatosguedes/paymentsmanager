@@ -1,18 +1,18 @@
 package com.example.paymentsmanager.transportlayers.impl;
 
-import com.example.paymentsmanager.interactors.GerenciadorService;
+import com.example.paymentsmanager.interactors.GerenciadorUseCase;
 import org.springframework.scheduling.annotation.Scheduled;
 
 public class JobProcessarFluxoImpl {
 
-    private final GerenciadorService gerenciadorService;
+    private final GerenciadorUseCase gerenciadorUseCase;
 
-    public JobProcessarFluxoImpl(GerenciadorService gerenciadorService) {
-        this.gerenciadorService = gerenciadorService;
+    public JobProcessarFluxoImpl(GerenciadorUseCase gerenciadorUseCase) {
+        this.gerenciadorUseCase = gerenciadorUseCase;
     }
 
     @Scheduled(cron = "0 0 0 * * MON-FRI")
     private void processarFluxo() {
-        gerenciadorService.processarPagamento();
+        gerenciadorUseCase.processarPagamento();
     }
 }

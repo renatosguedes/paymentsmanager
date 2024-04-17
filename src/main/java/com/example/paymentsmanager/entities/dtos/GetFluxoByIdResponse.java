@@ -5,12 +5,12 @@ import java.util.List;
 public class GetFluxoByIdResponse {
 
     private String id;
-    private List<GetFluxoByIdFluxoResponse> fluxo;
+    private List<GetFluxoByIdPagamentoResponse> fluxo;
 
     public GetFluxoByIdResponse() {
     }
 
-    public GetFluxoByIdResponse(String id, List<GetFluxoByIdFluxoResponse> fluxo) {
+    public GetFluxoByIdResponse(String id, List<GetFluxoByIdPagamentoResponse> fluxo) {
         this.id = id;
         this.fluxo = fluxo;
     }
@@ -23,11 +23,11 @@ public class GetFluxoByIdResponse {
         this.id = id;
     }
 
-    public List<GetFluxoByIdFluxoResponse> getFluxo() {
+    public List<GetFluxoByIdPagamentoResponse> getFluxo() {
         return fluxo;
     }
 
-    public void setFluxo(List<GetFluxoByIdFluxoResponse> fluxo) {
+    public void setFluxo(List<GetFluxoByIdPagamentoResponse> fluxo) {
         this.fluxo = fluxo;
     }
 }

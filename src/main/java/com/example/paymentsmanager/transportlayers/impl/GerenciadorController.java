@@ -1,7 +1,8 @@
 package com.example.paymentsmanager.transportlayers.impl;
 
 import com.example.paymentsmanager.entities.FluxoPagamento;
-import com.example.paymentsmanager.interactors.GerenciadorService;
+import com.example.paymentsmanager.entities.dtos.GetFluxosResponse;
+import com.example.paymentsmanager.interactors.GerenciadorUseCase;
 import com.example.paymentsmanager.transportlayers.GerenciadorApi;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,14 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/gerenciador")
 public class GerenciadorController implements GerenciadorApi {
 
-    private final GerenciadorService gerenciadorService;
+    private final GerenciadorUseCase gerenciadorUseCase;
 
-    public GerenciadorController(GerenciadorService gerenciadorService) {
-        this.gerenciadorService = gerenciadorService;
+    public GerenciadorController(GerenciadorUseCase gerenciadorUseCase) {
+        this.gerenciadorUseCase = gerenciadorUseCase;
     }
 
     @Override
     public ResponseEntity<FluxoPagamento> buscarFluxoPagamento(String idFluxo) {
-        return ResponseEntity.ok().body(gerenciadorService.buscarFluxoPagamento());
+        return ResponseEntity.ok().body(gerenciadorUseCase.buscarFluxoPagamento(idFluxo));
+    }
+
+    @Override
+    public ResponseEntity<GetFluxosResponse> buscarFluxos() {
+        return ResponseEntity.ok().body(gerenciadorUseCase.buscarFluxos());
     }
 }

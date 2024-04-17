@@ -7,9 +7,7 @@ public class FluxoPagamento {
     private String id;
     private List<Pagamento> pagamentos;
 
-    public FluxoPagamento(String id, List<Pagamento> pagamentos) {
-        this.id = id;
-        this.pagamentos = pagamentos;
+    public FluxoPagamento() {
     }
 
     public String getId() {

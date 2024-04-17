@@ -1,6 +1,7 @@
 package com.example.paymentsmanager.transportlayers;
 
 import com.example.paymentsmanager.entities.FluxoPagamento;
+import com.example.paymentsmanager.entities.dtos.GetFluxosResponse;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -27,9 +28,23 @@ public interface GerenciadorApi {
     @GetMapping(value = "/fluxo/{idFluxo}")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Fluxo encontrado", content = {@Content(mediaType = "application/json",
-            schema = @Schema(implementation = FluxoPagamento.class))}),
+                    schema = @Schema(implementation = FluxoPagamento.class))}),
             @ApiResponse(responseCode = "400", description = "ID inválido", content = @Content),
             @ApiResponse(responseCode = "404", description = "Fluxo não encontrado", content = @Content)
     })
     ResponseEntity<FluxoPagamento> buscarFluxoPagamento(@Parameter(description = "ID do fluxo a ser buscado") @PathVariable String idFluxo);
+
+    /**
+     * Busca todos os fluxos disponíveis.
+     *
+     * @return Um objeto contendo todos os IDs dos fluxos
+     */
+    @Operation(summary = "Busca todos os fluxos disponíveis")
+    @GetMapping(value = "/fluxos")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Fluxos encontrados", content = {@Content(mediaType = "application/json",
+                    schema = @Schema(implementation = FluxoPagamento.class))}),
+            @ApiResponse(responseCode = "404", description = "Fluxos não encontrados", content = @Content)
+    })
+    ResponseEntity<GetFluxosResponse> buscarFluxos();
 }
