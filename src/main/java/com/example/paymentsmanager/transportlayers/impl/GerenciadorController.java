@@ -4,9 +4,11 @@ import com.example.paymentsmanager.entities.FluxoPagamento;
 import com.example.paymentsmanager.interactors.GerenciadorService;
 import com.example.paymentsmanager.transportlayers.GerenciadorApi;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequestMapping("/gerenciador")
 public class GerenciadorController implements GerenciadorApi {
 
     private final GerenciadorService gerenciadorService;
