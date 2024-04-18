@@ -11,11 +11,8 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 # Clone este repositório
 $ git clone https://github.com/renatosguedes/paymentsmanager.git
 
-# Não é necessário fazer docker build, uma vez que a imagem está no meu repositório público, mas caso deseje
-$ docker build --build-arg JAR_FILE=build/libs/*.jar -t renatosguedes/paymentsmanager .
-
-# Na pasta raiz do projeto, execute os seguintes comandos
-$ docker run -d -p 8080:8080 --name paymentsmanager renatosguedes/paymentsmanager
+# Na pasta raiz do projeto, execute o seguinte comando:
+$ docker compose up
 
 # O servidor iniciará na porta 8080 - acesse <http://localhost:8080>
 ```
