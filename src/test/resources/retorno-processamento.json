@@ -1,0 +1,12 @@
+{
+  "id": "00026634-C000-4E5E-8C3B-E9B2243EB9AC",
+  "quantidadeProcessada": 1,
+  "valorTotalPago": 8.72,
+  "pagamentosProcessados": [
+    {
+      "dataPagamento": "2023-06-19T00:00:00Z",
+      "valorPagamento": 8.72,
+      "statusPagamento": "REALIZADO"
+    }
+  ]
+}
