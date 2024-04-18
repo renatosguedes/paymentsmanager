@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "61b9e956-80bd-461d-a382-beb9c7f5f88d",
+		"name": "Serviço gerenciador de fluxos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9590292"
+	},
+	"item": [
+		{
+			"name": "Buscar fluxos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/gerenciador/fluxos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerenciador",
+						"fluxos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar fluxo por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/gerenciador/fluxo/:fluxoId",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerenciador",
+						"fluxo",
+						":fluxoId"
+					],
+					"variable": [
+						{
+							"key": "fluxoId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Processar fluxo por ID",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/gerenciador/fluxo/:idFluxo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gerenciador",
+						"fluxo",
+						":idFluxo"
+					],
+					"variable": [
+						{
+							"key": "idFluxo",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
