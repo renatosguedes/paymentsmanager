@@ -3,15 +3,22 @@ package com.example.paymentsmanager.interactors;
 import com.example.paymentsmanager.datasources.SistemaFluxosClient;
 import com.example.paymentsmanager.entities.FluxoPagamento;
 import com.example.paymentsmanager.entities.Pagamento;
+import com.example.paymentsmanager.entities.RetornoProcessamento;
 import com.example.paymentsmanager.entities.dtos.GetFluxoByIdPagamentoResponse;
 import com.example.paymentsmanager.entities.dtos.GetFluxoByIdResponse;
 import com.example.paymentsmanager.entities.dtos.GetFluxosResponse;
 import com.example.paymentsmanager.entities.enums.StatusPagamento;
+import com.example.paymentsmanager.interactors.exceptions.BusinessException;
+import com.example.paymentsmanager.interactors.exceptions.NotFoundException;
+import feign.FeignException;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.paymentsmanager.utils.ConstantsUtil.NOT_FOUND;
+import static com.example.paymentsmanager.utils.ConstantsUtil.NO_PAYMENTS_TO_PROCESS;
 
 @Service
 public class GerenciadorUseCase {
@@ -27,7 +34,11 @@ public class GerenciadorUseCase {
     }
 
     public FluxoPagamento buscarFluxoPagamento(String id) {
-        return converterFluxo(sistemaFluxosClient.getFluxoById(id));
+        try {
+            return converterFluxo(sistemaFluxosClient.getFluxoById(id));
+        } catch (FeignException e) {
+            throw new NotFoundException(NOT_FOUND);
+        }
     }
 
     private FluxoPagamento converterFluxo(GetFluxoByIdResponse getFluxoByIdResponse) {
