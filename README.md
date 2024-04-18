@@ -20,6 +20,11 @@ $ docker run -d -p 8080:8080 --name paymentsmanager renatosguedes/paymentsmanage
 # O servidor iniciará na porta 8080 - acesse <http://localhost:8080>
 ```
 
+
+Existe uma documentação da API no Swagger UI em [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+
+Também há uma collection do Postman na pasta raiz do projeto.
+
 ### 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
