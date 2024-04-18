@@ -1,5 +1,6 @@
 package com.example.paymentsmanager.configs;
 
+import com.example.paymentsmanager.interactors.exceptions.BusinessException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
@@ -28,7 +29,7 @@ public class FeignConfig {
                 Thread.sleep(6000);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                throw new RuntimeException("Delay interrupted", e);
+                throw new BusinessException("Delay interrupted", e);
             }
         };
     }
