@@ -1,0 +1,10 @@
+{
+  "id": "00026634-C000-4E5E-8C3B-E9B2243EB9AC",
+  "pagamentos": [
+    {
+      "dataPagamento": "2023-06-19T00:00:00Z",
+      "valorPagamento": 8.72,
+      "statusPagamento": "PAGAMENTO_PENDENTE"
+    }
+  ]
+}
