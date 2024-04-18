@@ -13,6 +13,7 @@ import com.example.paymentsmanager.interactors.exceptions.NotFoundException;
 import feign.FeignException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -80,11 +81,12 @@ public class GerenciadorUseCase {
     }
 
     private static StatusPagamento getStatusPagamento(OffsetDateTime data) {
-        OffsetDateTime agora = OffsetDateTime.now();
-        if (agora.isAfter(data)) {
+        LocalDate agora = OffsetDateTime.now().toLocalDate();
+        LocalDate dataSemHora = data.toLocalDate();
+        if (agora.isAfter(dataSemHora)) {
             return StatusPagamento.REALIZADO;
         }
-        if (agora.isBefore(data)) {
+        if (agora.isBefore(dataSemHora)) {
             return StatusPagamento.A_VENCER;
         }
         return StatusPagamento.PAGAMENTO_PENDENTE;
