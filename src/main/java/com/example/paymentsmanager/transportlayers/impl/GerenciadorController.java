@@ -1,6 +1,7 @@
 package com.example.paymentsmanager.transportlayers.impl;
 
 import com.example.paymentsmanager.entities.FluxoPagamento;
+import com.example.paymentsmanager.entities.RetornoProcessamento;
 import com.example.paymentsmanager.entities.dtos.GetFluxosResponse;
 import com.example.paymentsmanager.interactors.GerenciadorUseCase;
 import com.example.paymentsmanager.transportlayers.GerenciadorApi;
@@ -26,5 +27,10 @@ public class GerenciadorController implements GerenciadorApi {
     @Override
     public ResponseEntity<GetFluxosResponse> buscarFluxos() {
         return ResponseEntity.ok().body(gerenciadorUseCase.buscarFluxos());
+    }
+
+    @Override
+    public ResponseEntity<RetornoProcessamento> processarFluxo(String idFluxo) {
+        return ResponseEntity.ok().body(gerenciadorUseCase.processarPagamentos(idFluxo));
     }
 }

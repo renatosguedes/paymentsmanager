@@ -33,6 +33,24 @@ public class GerenciadorUseCase {
         return sistemaFluxosClient.getFluxos();
     }
 
+    public RetornoProcessamento processarPagamentos(String id) {
+        List<Pagamento> pagamentosProcessados = new ArrayList<>();
+        double valorPago = 0.0;
+        int quantidade = 0;
+        for (Pagamento p : buscarFluxoPagamento(id).getPagamentos()) {
+            if (p.getStatusPagamento().equals(StatusPagamento.PAGAMENTO_PENDENTE)) {
+                p.setStatusPagamento(StatusPagamento.REALIZADO);
+                pagamentosProcessados.add(p);
+                valorPago = valorPago + p.getValorPagamento();
+                quantidade++;
+            }
+        }
+        if (quantidade == 0) {
+            throw new BusinessException(NO_PAYMENTS_TO_PROCESS);
+        }
+        return new RetornoProcessamento(id, quantidade, valorPago, pagamentosProcessados);
+    }
+
     public FluxoPagamento buscarFluxoPagamento(String id) {
         try {
             return converterFluxo(sistemaFluxosClient.getFluxoById(id));
@@ -49,17 +67,27 @@ public class GerenciadorUseCase {
     }
 
     private List<Pagamento> converterPagamento(List<GetFluxoByIdPagamentoResponse> pagamentos) {
-        OffsetDateTime agora = OffsetDateTime.now();
         List<Pagamento> response = new ArrayList<>();
         for (GetFluxoByIdPagamentoResponse p : pagamentos) {
             OffsetDateTime data = OffsetDateTime.parse(p.getData());
             Pagamento pagamento = new Pagamento();
             pagamento.setDataPagamento(data);
-            pagamento.setStatusPagamento(agora.isBefore(data) ? StatusPagamento.PENDENTE : StatusPagamento.REALIZADO);
+            pagamento.setStatusPagamento(getStatusPagamento(data));
             pagamento.setValorPagamento(p.getPmt());
             response.add(pagamento);
         }
         return response;
+    }
+
+    private static StatusPagamento getStatusPagamento(OffsetDateTime data) {
+        OffsetDateTime agora = OffsetDateTime.now();
+        if (agora.isAfter(data)) {
+            return StatusPagamento.REALIZADO;
+        }
+        if (agora.isBefore(data)) {
+            return StatusPagamento.A_VENCER;
+        }
+        return StatusPagamento.PAGAMENTO_PENDENTE;
     }
 
 }

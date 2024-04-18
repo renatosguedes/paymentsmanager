@@ -2,6 +2,7 @@ package com.example.paymentsmanager.entities.enums;
 
 public enum StatusPagamento {
 
-    PENDENTE,
-    REALIZADO
+    REALIZADO,
+    PAGAMENTO_PENDENTE,
+    A_VENCER
 }
